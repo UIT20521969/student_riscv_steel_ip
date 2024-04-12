@@ -1,0 +1,341 @@
+
+build/hello_world.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .boot:
+
+00000000 <_start>:
+   0:	00000097          	auipc	ra,0x0
+   4:	00008093          	mv	ra,ra
+   8:	40000113          	li	sp,1024
+   c:	00000297          	auipc	t0,0x0
+  10:	01028293          	addi	t0,t0,16 # 1c <__rvsteel_irq_handler__>
+  14:	30529073          	csrw	mtvec,t0
+  18:	0f80006f          	j	110 <main>
+
+0000001c <__rvsteel_irq_handler__>:
+  1c:	00001297          	auipc	t0,0x1
+  20:	fec28293          	addi	t0,t0,-20 # 1008 <__RVSTEEL_IRQ_HANDLER>
+  24:	0002a303          	lw	t1,0(t0)
+  28:	000300e7          	jalr	t1
+  2c:	30200073          	mret
+
+00000030 <uart_send_char>:
+  30:	000017b7          	lui	a5,0x1
+  34:	0047a703          	lw	a4,4(a5) # 1004 <__RVSTEEL_UART_TX>
+  38:	00100693          	li	a3,1
+  3c:	00074783          	lbu	a5,0(a4)
+  40:	fed79ee3          	bne	a5,a3,3c <uart_send_char+0xc>
+  44:	00a70023          	sb	a0,0(a4)
+  48:	00008067          	ret
+
+0000004c <uart_send_string>:
+  4c:	00054603          	lbu	a2,0(a0)
+  50:	02060463          	beqz	a2,78 <uart_send_string+0x2c>
+  54:	000015b7          	lui	a1,0x1
+  58:	00100693          	li	a3,1
+  5c:	0045a703          	lw	a4,4(a1) # 1004 <__RVSTEEL_UART_TX>
+  60:	00074783          	lbu	a5,0(a4)
+  64:	fed79ee3          	bne	a5,a3,60 <uart_send_string+0x14>
+  68:	00c70023          	sb	a2,0(a4)
+  6c:	00154603          	lbu	a2,1(a0)
+  70:	00150513          	addi	a0,a0,1
+  74:	fe0614e3          	bnez	a2,5c <uart_send_string+0x10>
+  78:	00008067          	ret
+
+0000007c <uart_read_last_char>:
+  7c:	000017b7          	lui	a5,0x1
+  80:	0007a783          	lw	a5,0(a5) # 1000 <__RVSTEEL_UART_RX>
+  84:	0007c503          	lbu	a0,0(a5)
+  88:	00008067          	ret
+
+0000008c <irq_enable_all>:
+  8c:	fe512e23          	sw	t0,-4(sp)
+  90:	fff00293          	li	t0,-1
+  94:	30029073          	csrw	mstatus,t0
+  98:	30429073          	csrw	mie,t0
+  9c:	ffc12283          	lw	t0,-4(sp)
+  a0:	00008067          	ret
+
+000000a4 <irq_disable_all>:
+  a4:	fe512e23          	sw	t0,-4(sp)
+  a8:	00000293          	li	t0,0
+  ac:	30029073          	csrw	mstatus,t0
+  b0:	30429073          	csrw	mie,t0
+  b4:	ffc12283          	lw	t0,-4(sp)
+  b8:	00008067          	ret
+
+000000bc <irq_set_interrupt_handler>:
+  bc:	000017b7          	lui	a5,0x1
+  c0:	00a7a423          	sw	a0,8(a5) # 1008 <__RVSTEEL_IRQ_HANDLER>
+  c4:	00008067          	ret
+
+000000c8 <busy_wait>:
+  c8:	0000006f          	j	c8 <busy_wait>
+
+Disassembly of section .text:
+
+000000cc <process_received_character>:
+  cc:	ff010113          	addi	sp,sp,-16
+  d0:	00112623          	sw	ra,12(sp)
+  d4:	fa9ff0ef          	jal	7c <uart_read_last_char>
+  d8:	00d00713          	li	a4,13
+  dc:	02e50263          	beq	a0,a4,100 <process_received_character+0x34>
+  e0:	07e00713          	li	a4,126
+  e4:	00a77863          	bgeu	a4,a0,f4 <process_received_character+0x28>
+  e8:	00c12083          	lw	ra,12(sp)
+  ec:	01010113          	addi	sp,sp,16
+  f0:	00008067          	ret
+  f4:	00c12083          	lw	ra,12(sp)
+  f8:	01010113          	addi	sp,sp,16
+  fc:	f35ff06f          	j	30 <uart_send_char>
+ 100:	00c12083          	lw	ra,12(sp)
+ 104:	14000513          	li	a0,320
+ 108:	01010113          	addi	sp,sp,16
+ 10c:	f41ff06f          	j	4c <uart_send_string>
+
+Disassembly of section .text.startup:
+
+00000110 <main>:
+ 110:	ff010113          	addi	sp,sp,-16
+ 114:	16800513          	li	a0,360
+ 118:	00112623          	sw	ra,12(sp)
+ 11c:	f31ff0ef          	jal	4c <uart_send_string>
+ 120:	0cc00513          	li	a0,204
+ 124:	f99ff0ef          	jal	bc <irq_set_interrupt_handler>
+ 128:	f65ff0ef          	jal	8c <irq_enable_all>
+ 12c:	f9dff0ef          	jal	c8 <busy_wait>
+ 130:	00c12083          	lw	ra,12(sp)
+ 134:	00000513          	li	a0,0
+ 138:	01010113          	addi	sp,sp,16
+ 13c:	00008067          	ret
+
+Disassembly of section .rodata.str1.4:
+
+00000140 <.rodata.str1.4>:
+ 140:	540a                	.insn	2, 0x540a
+ 142:	7079                	.insn	2, 0x7079
+ 144:	2065                	.insn	2, 0x2065
+ 146:	656d6f73          	csrrsi	t5,hviprio1h,26
+ 14a:	6874                	.insn	2, 0x6874
+ 14c:	6e69                	.insn	2, 0x6e69
+ 14e:	6c652067          	.insn	4, 0x6c652067
+ 152:	61206573          	csrrsi	a0,0x612,0
+ 156:	646e                	.insn	2, 0x646e
+ 158:	7020                	.insn	2, 0x7020
+ 15a:	6572                	.insn	2, 0x6572
+ 15c:	65207373          	csrrci	t1,0x652,0
+ 160:	746e                	.insn	2, 0x746e
+ 162:	7265                	.insn	2, 0x7265
+ 164:	203a                	.insn	2, 0x203a
+ 166:	0000                	.insn	2, 0x
+ 168:	520a                	.insn	2, 0x520a
+ 16a:	5349                	.insn	2, 0x5349
+ 16c:	20562d43          	.insn	4, 0x20562d43
+ 170:	65657453          	.insn	4, 0x65657453
+ 174:	206c                	.insn	2, 0x206c
+ 176:	20436f53          	.insn	4, 0x20436f53
+ 17a:	5049                	.insn	2, 0x5049
+ 17c:	2d0a                	.insn	2, 0x2d0a
+ 17e:	2d2d                	.insn	2, 0x2d2d
+ 180:	2d2d                	.insn	2, 0x2d2d
+ 182:	2d2d                	.insn	2, 0x2d2d
+ 184:	2d2d                	.insn	2, 0x2d2d
+ 186:	2d2d                	.insn	2, 0x2d2d
+ 188:	2d2d                	.insn	2, 0x2d2d
+ 18a:	2d2d                	.insn	2, 0x2d2d
+ 18c:	2d2d                	.insn	2, 0x2d2d
+ 18e:	2d2d                	.insn	2, 0x2d2d
+ 190:	0a0a                	.insn	2, 0x0a0a
+ 192:	6548                	.insn	2, 0x6548
+ 194:	6c6c                	.insn	2, 0x6c6c
+ 196:	6f57206f          	j	7308a <__RVSTEEL_IRQ_HANDLER+0x72082>
+ 19a:	6c72                	.insn	2, 0x6c72
+ 19c:	2164                	.insn	2, 0x2164
+ 19e:	0a0a                	.insn	2, 0x0a0a
+ 1a0:	7954                	.insn	2, 0x7954
+ 1a2:	6570                	.insn	2, 0x6570
+ 1a4:	7320                	.insn	2, 0x7320
+ 1a6:	74656d6f          	jal	s10,568ec <__RVSTEEL_IRQ_HANDLER+0x558e4>
+ 1aa:	6968                	.insn	2, 0x6968
+ 1ac:	676e                	.insn	2, 0x676e
+ 1ae:	6120                	.insn	2, 0x6120
+ 1b0:	646e                	.insn	2, 0x646e
+ 1b2:	7020                	.insn	2, 0x7020
+ 1b4:	6572                	.insn	2, 0x6572
+ 1b6:	65207373          	csrrci	t1,0x652,0
+ 1ba:	746e                	.insn	2, 0x746e
+ 1bc:	7265                	.insn	2, 0x7265
+ 1be:	203a                	.insn	2, 0x203a
+ 1c0:	000a                	.insn	2, 0x000a
+
+Disassembly of section .eh_frame:
+
+000001c4 <.eh_frame>:
+ 1c4:	0010                	.insn	2, 0x0010
+ 1c6:	0000                	.insn	2, 0x
+ 1c8:	0000                	.insn	2, 0x
+ 1ca:	0000                	.insn	2, 0x
+ 1cc:	00527a03          	.insn	4, 0x00527a03
+ 1d0:	7c01                	.insn	2, 0x7c01
+ 1d2:	0101                	.insn	2, 0x0101
+ 1d4:	00020d1b          	.insn	4, 0x00020d1b
+ 1d8:	0028                	.insn	2, 0x0028
+ 1da:	0000                	.insn	2, 0x
+ 1dc:	0018                	.insn	2, 0x0018
+ 1de:	0000                	.insn	2, 0x
+ 1e0:	feec                	.insn	2, 0xfeec
+ 1e2:	ffff                	.insn	2, 0xffff
+ 1e4:	0044                	.insn	2, 0x0044
+ 1e6:	0000                	.insn	2, 0x
+ 1e8:	4400                	.insn	2, 0x4400
+ 1ea:	100e                	.insn	2, 0x100e
+ 1ec:	8144                	.insn	2, 0x8144
+ 1ee:	5801                	.insn	2, 0x5801
+ 1f0:	c10a                	.insn	2, 0xc10a
+ 1f2:	0e44                	.insn	2, 0x0e44
+ 1f4:	4400                	.insn	2, 0x4400
+ 1f6:	c10a440b          	.insn	4, 0xc10a440b
+ 1fa:	0e44                	.insn	2, 0x0e44
+ 1fc:	4400                	.insn	2, 0x4400
+ 1fe:	48c1440b          	.insn	4, 0x48c1440b
+ 202:	000e                	.insn	2, 0x000e
+ 204:	0018                	.insn	2, 0x0018
+ 206:	0000                	.insn	2, 0x
+ 208:	0044                	.insn	2, 0x0044
+ 20a:	0000                	.insn	2, 0x
+ 20c:	ff04                	.insn	2, 0xff04
+ 20e:	ffff                	.insn	2, 0xffff
+ 210:	0030                	.insn	2, 0x0030
+ 212:	0000                	.insn	2, 0x
+ 214:	4400                	.insn	2, 0x4400
+ 216:	100e                	.insn	2, 0x100e
+ 218:	8148                	.insn	2, 0x8148
+ 21a:	5801                	.insn	2, 0x5801
+ 21c:	48c1                	.insn	2, 0x48c1
+ 21e:	000e                	.insn	2, 0x000e
+ 220:	0010                	.insn	2, 0x0010
+ 222:	0000                	.insn	2, 0x
+ 224:	0060                	.insn	2, 0x0060
+ 226:	0000                	.insn	2, 0x
+ 228:	fe08                	.insn	2, 0xfe08
+ 22a:	ffff                	.insn	2, 0xffff
+ 22c:	001c                	.insn	2, 0x001c
+ 22e:	0000                	.insn	2, 0x
+ 230:	0000                	.insn	2, 0x
+ 232:	0000                	.insn	2, 0x
+ 234:	0010                	.insn	2, 0x0010
+ 236:	0000                	.insn	2, 0x
+ 238:	0074                	.insn	2, 0x0074
+ 23a:	0000                	.insn	2, 0x
+ 23c:	fe10                	.insn	2, 0xfe10
+ 23e:	ffff                	.insn	2, 0xffff
+ 240:	0030                	.insn	2, 0x0030
+ 242:	0000                	.insn	2, 0x
+ 244:	0000                	.insn	2, 0x
+ 246:	0000                	.insn	2, 0x
+ 248:	0010                	.insn	2, 0x0010
+ 24a:	0000                	.insn	2, 0x
+ 24c:	0088                	.insn	2, 0x0088
+ 24e:	0000                	.insn	2, 0x
+ 250:	fe2c                	.insn	2, 0xfe2c
+ 252:	ffff                	.insn	2, 0xffff
+ 254:	0010                	.insn	2, 0x0010
+ 256:	0000                	.insn	2, 0x
+ 258:	0000                	.insn	2, 0x
+ 25a:	0000                	.insn	2, 0x
+ 25c:	0010                	.insn	2, 0x0010
+ 25e:	0000                	.insn	2, 0x
+ 260:	009c                	.insn	2, 0x009c
+ 262:	0000                	.insn	2, 0x
+ 264:	fe28                	.insn	2, 0xfe28
+ 266:	ffff                	.insn	2, 0xffff
+ 268:	0018                	.insn	2, 0x0018
+ 26a:	0000                	.insn	2, 0x
+ 26c:	0000                	.insn	2, 0x
+ 26e:	0000                	.insn	2, 0x
+ 270:	0010                	.insn	2, 0x0010
+ 272:	0000                	.insn	2, 0x
+ 274:	00b0                	.insn	2, 0x00b0
+ 276:	0000                	.insn	2, 0x
+ 278:	fe2c                	.insn	2, 0xfe2c
+ 27a:	ffff                	.insn	2, 0xffff
+ 27c:	0018                	.insn	2, 0x0018
+ 27e:	0000                	.insn	2, 0x
+ 280:	0000                	.insn	2, 0x
+ 282:	0000                	.insn	2, 0x
+ 284:	0010                	.insn	2, 0x0010
+ 286:	0000                	.insn	2, 0x
+ 288:	00c4                	.insn	2, 0x00c4
+ 28a:	0000                	.insn	2, 0x
+ 28c:	fe30                	.insn	2, 0xfe30
+ 28e:	ffff                	.insn	2, 0xffff
+ 290:	000c                	.insn	2, 0x000c
+ 292:	0000                	.insn	2, 0x
+ 294:	0000                	.insn	2, 0x
+ 296:	0000                	.insn	2, 0x
+ 298:	0010                	.insn	2, 0x0010
+ 29a:	0000                	.insn	2, 0x
+ 29c:	00d8                	.insn	2, 0x00d8
+ 29e:	0000                	.insn	2, 0x
+ 2a0:	fe28                	.insn	2, 0xfe28
+ 2a2:	ffff                	.insn	2, 0xffff
+ 2a4:	0004                	.insn	2, 0x0004
+ 2a6:	0000                	.insn	2, 0x
+ 2a8:	0000                	.insn	2, 0x
+	...
+
+Disassembly of section .eh_frame_hdr:
+
+000002ac <__GNU_EH_FRAME_HDR>:
+ 2ac:	1b01                	.insn	2, 0x1b01
+ 2ae:	ff143b03          	.insn	4, 0xff143b03
+ 2b2:	ffff                	.insn	2, 0xffff
+ 2b4:	0009                	.insn	2, 0x0009
+ 2b6:	0000                	.insn	2, 0x
+ 2b8:	fd84                	.insn	2, 0xfd84
+ 2ba:	ffff                	.insn	2, 0xffff
+ 2bc:	ff74                	.insn	2, 0xff74
+ 2be:	ffff                	.insn	2, 0xffff
+ 2c0:	fda0                	.insn	2, 0xfda0
+ 2c2:	ffff                	.insn	2, 0xffff
+ 2c4:	ff88                	.insn	2, 0xff88
+ 2c6:	ffff                	.insn	2, 0xffff
+ 2c8:	fdd0                	.insn	2, 0xfdd0
+ 2ca:	ffff                	.insn	2, 0xffff
+ 2cc:	ff9c                	.insn	2, 0xff9c
+ 2ce:	ffff                	.insn	2, 0xffff
+ 2d0:	fde0                	.insn	2, 0xfde0
+ 2d2:	ffff                	.insn	2, 0xffff
+ 2d4:	ffb0                	.insn	2, 0xffb0
+ 2d6:	ffff                	.insn	2, 0xffff
+ 2d8:	fdf8                	.insn	2, 0xfdf8
+ 2da:	ffff                	.insn	2, 0xffff
+ 2dc:	ffc4                	.insn	2, 0xffc4
+ 2de:	ffff                	.insn	2, 0xffff
+ 2e0:	fe10                	.insn	2, 0xfe10
+ 2e2:	ffff                	.insn	2, 0xffff
+ 2e4:	ffd8                	.insn	2, 0xffd8
+ 2e6:	ffff                	.insn	2, 0xffff
+ 2e8:	fe1c                	.insn	2, 0xfe1c
+ 2ea:	ffff                	.insn	2, 0xffff
+ 2ec:	ffec                	.insn	2, 0xffec
+ 2ee:	ffff                	.insn	2, 0xffff
+ 2f0:	fe20                	.insn	2, 0xfe20
+ 2f2:	ffff                	.insn	2, 0xffff
+ 2f4:	ff2c                	.insn	2, 0xff2c
+ 2f6:	ffff                	.insn	2, 0xffff
+ 2f8:	fe64                	.insn	2, 0xfe64
+ 2fa:	ffff                	.insn	2, 0xffff
+ 2fc:	ff58                	.insn	2, 0xff58
+ 2fe:	ffff                	.insn	2, 0xffff
+
+Disassembly of section .sdata:
+
+00001000 <__RVSTEEL_UART_RX>:
+    1000:	0004                	.insn	2, 0x0004
+    1002:	8000                	.insn	2, 0x8000
+
+00001004 <__RVSTEEL_UART_TX>:
+    1004:	0000                	.insn	2, 0x
+    1006:	8000                	.insn	2, 0x8000
