@@ -82,11 +82,11 @@ Disassembly of section .text.startup:
 Disassembly of section .rodata.str1.4:
 
 000000d4 <.rodata.str1.4>:
-  d4:	6548                	.insn	2, 0x6548
-  d6:	6c6c                	.insn	2, 0x6c6c
-  d8:	6f57206f          	j	72fcc <__RVSTEEL_IRQ_HANDLER+0x71fc4>
-  dc:	6c72                	.insn	2, 0x6c72
-  de:	2164                	.insn	2, 0x2164
+  d4:	6958                	.insn	2, 0x6958
+  d6:	206e                	.insn	2, 0x206e
+  d8:	6f616863          	bltu	sp,s6,7c8 <main+0x6fc>
+  dc:	5620                	.insn	2, 0x5620
+  de:	214e                	.insn	2, 0x214e
 	...
 
 Disassembly of section .sdata:
