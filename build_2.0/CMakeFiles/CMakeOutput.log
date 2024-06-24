@@ -1,0 +1,264 @@
+The target system is: Generic -  - 
+The host system is: Linux - 6.5.0-28-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /opt/riscv/bin/riscv32-unknown-elf-gcc 
+Build flags: -O2
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/3.22.1/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /opt/riscv/bin/riscv32-unknown-elf-g++ 
+Build flags: -O2
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/3.22.1/CompilerIdCXX/a.out"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+riscv32-unknown-elf-gcc () 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e2ba3/fast && gmake[1]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+/usr/bin/gmake  -f CMakeFiles/cmTC_e2ba3.dir/build.make CMakeFiles/cmTC_e2ba3.dir/build
+gmake[2]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj
+/opt/riscv/bin/riscv32-unknown-elf-gcc   -O2    -v -std=gnu11 -o CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/opt/riscv/bin/riscv32-unknown-elf-gcc
+Target: riscv32-unknown-elf
+Configured with: /home/runner/work/riscv-gnu-toolchain/riscv-gnu-toolchain/gcc/configure --target=riscv32-unknown-elf --prefix=/opt/riscv --disable-shared --disable-threads --enable-languages=c,c++ --with-pkgversion= --with-system-zlib --enable-tls --with-newlib --with-sysroot=/opt/riscv/riscv32-unknown-elf --with-native-system-header-dir=/include --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-tm-clone-registry --src=.././gcc --disable-multilib --with-abi=ilp32d --with-arch=rv32gc --with-tune=rocket --with-isa-spec=20191213 'CFLAGS_FOR_TARGET=-Os    -mcmodel=medlow' 'CXXFLAGS_FOR_TARGET=-Os    -mcmodel=medlow'
+Thread model: single
+Supported LTO compression algorithms: zlib zstd
+gcc version 13.2.0 () 
+COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_e2ba3.dir/'
+ /opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/cc1 -quiet -v -imultilib . /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_e2ba3.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=rocket -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -march=rv32imafdc_zicsr_zifencei -O2 -std=gnu11 -version -o /tmp/ccifpnex.s
+GNU C11 () version 13.2.0 (riscv32-unknown-elf)
+	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/opt/riscv/riscv32-unknown-elf/usr/local/include"
+ignoring duplicate directory "/opt/riscv/riscv32-unknown-elf/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include
+End of search list.
+Compiler executable checksum: 15cb4b72f6d6356fe54c89e25dab1762
+COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_e2ba3.dir/'
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/as -v --traditional-format -march=rv32imafdc_zicsr_zifencei -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -o CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj /tmp/ccifpnex.s
+GNU assembler version 2.42 (riscv32-unknown-elf) using BFD version (GNU Binutils) 2.42
+COMPILER_PATH=/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/
+LIBRARY_PATH=/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/:/opt/riscv/riscv32-unknown-elf/lib/
+COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.'
+Linking C static library libcmTC_e2ba3.a
+/usr/bin/cmake -P CMakeFiles/cmTC_e2ba3.dir/cmake_clean_target.cmake
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2ba3.dir/link.txt --verbose=1
+/opt/riscv/bin/riscv32-unknown-elf-ar qc libcmTC_e2ba3.a CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj
+/opt/riscv/bin/riscv32-unknown-elf-ranlib libcmTC_e2ba3.a
+gmake[2]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+gmake[1]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include]
+  end of search list found
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include] ==> [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed] ==> [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include] ==> [/opt/riscv/riscv32-unknown-elf/include]
+  implicit include dirs: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include;/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed;/opt/riscv/riscv32-unknown-elf/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(riscv32-unknown-elf-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e2ba3/fast && gmake[1]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_e2ba3.dir/build.make CMakeFiles/cmTC_e2ba3.dir/build]
+  ignore line: [gmake[2]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/opt/riscv/bin/riscv32-unknown-elf-gcc   -O2    -v -std=gnu11 -o CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/riscv/bin/riscv32-unknown-elf-gcc]
+  ignore line: [Target: riscv32-unknown-elf]
+  ignore line: [Configured with: /home/runner/work/riscv-gnu-toolchain/riscv-gnu-toolchain/gcc/configure --target=riscv32-unknown-elf --prefix=/opt/riscv --disable-shared --disable-threads --enable-languages=c c++ --with-pkgversion= --with-system-zlib --enable-tls --with-newlib --with-sysroot=/opt/riscv/riscv32-unknown-elf --with-native-system-header-dir=/include --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-tm-clone-registry --src=.././gcc --disable-multilib --with-abi=ilp32d --with-arch=rv32gc --with-tune=rocket --with-isa-spec=20191213 'CFLAGS_FOR_TARGET=-Os    -mcmodel=medlow' 'CXXFLAGS_FOR_TARGET=-Os    -mcmodel=medlow']
+  ignore line: [Thread model: single]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 13.2.0 () ]
+  ignore line: [COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_e2ba3.dir/']
+  ignore line: [ /opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/cc1 -quiet -v -imultilib . /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_e2ba3.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=rocket -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -march=rv32imafdc_zicsr_zifencei -O2 -std=gnu11 -version -o /tmp/ccifpnex.s]
+  ignore line: [GNU C11 () version 13.2.0 (riscv32-unknown-elf)]
+  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/opt/riscv/riscv32-unknown-elf/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/opt/riscv/riscv32-unknown-elf/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include]
+  ignore line: [End of search list.]
+  ignore line: [Compiler executable checksum: 15cb4b72f6d6356fe54c89e25dab1762]
+  ignore line: [COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_e2ba3.dir/']
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/as -v --traditional-format -march=rv32imafdc_zicsr_zifencei -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -o CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj /tmp/ccifpnex.s]
+  ignore line: [GNU assembler version 2.42 (riscv32-unknown-elf) using BFD version (GNU Binutils) 2.42]
+  ignore line: [COMPILER_PATH=/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/]
+  ignore line: [LIBRARY_PATH=/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/:/opt/riscv/riscv32-unknown-elf/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C static library libcmTC_e2ba3.a]
+  ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_e2ba3.dir/cmake_clean_target.cmake]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2ba3.dir/link.txt --verbose=1]
+  ignore line: [/opt/riscv/bin/riscv32-unknown-elf-ar qc libcmTC_e2ba3.a CMakeFiles/cmTC_e2ba3.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/opt/riscv/bin/riscv32-unknown-elf-ranlib libcmTC_e2ba3.a]
+  ignore line: [gmake[2]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: [gmake[1]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: []
+  ignore line: []
+  implicit libs: []
+  implicit objs: []
+  implicit dirs: []
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_2f84a/fast && gmake[1]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+/usr/bin/gmake  -f CMakeFiles/cmTC_2f84a.dir/build.make CMakeFiles/cmTC_2f84a.dir/build
+gmake[2]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj
+/opt/riscv/bin/riscv32-unknown-elf-g++   -O2    -v -std=gnu++11 -o CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/opt/riscv/bin/riscv32-unknown-elf-g++
+Target: riscv32-unknown-elf
+Configured with: /home/runner/work/riscv-gnu-toolchain/riscv-gnu-toolchain/gcc/configure --target=riscv32-unknown-elf --prefix=/opt/riscv --disable-shared --disable-threads --enable-languages=c,c++ --with-pkgversion= --with-system-zlib --enable-tls --with-newlib --with-sysroot=/opt/riscv/riscv32-unknown-elf --with-native-system-header-dir=/include --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-tm-clone-registry --src=.././gcc --disable-multilib --with-abi=ilp32d --with-arch=rv32gc --with-tune=rocket --with-isa-spec=20191213 'CFLAGS_FOR_TARGET=-Os    -mcmodel=medlow' 'CXXFLAGS_FOR_TARGET=-Os    -mcmodel=medlow'
+Thread model: single
+Supported LTO compression algorithms: zlib zstd
+gcc version 13.2.0 () 
+COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu++11' '-o' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_2f84a.dir/'
+ /opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/cc1plus -quiet -v -imultilib . /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_2f84a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=rocket -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -march=rv32imafdc_zicsr_zifencei -O2 -std=gnu++11 -version -o /tmp/cclZCuaD.s
+GNU C++11 () version 13.2.0 (riscv32-unknown-elf)
+	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/opt/riscv/riscv32-unknown-elf/usr/local/include"
+ignoring duplicate directory "/opt/riscv/riscv32-unknown-elf/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/riscv32-unknown-elf/.
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/backward
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include
+End of search list.
+Compiler executable checksum: ad13cb0de9b78f29dc5fcfe68b5ab5d5
+COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu++11' '-o' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_2f84a.dir/'
+ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/as -v --traditional-format -march=rv32imafdc_zicsr_zifencei -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -o CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cclZCuaD.s
+GNU assembler version 2.42 (riscv32-unknown-elf) using BFD version (GNU Binutils) 2.42
+COMPILER_PATH=/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/
+LIBRARY_PATH=/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/:/opt/riscv/riscv32-unknown-elf/lib/
+COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu++11' '-o' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX static library libcmTC_2f84a.a
+/usr/bin/cmake -P CMakeFiles/cmTC_2f84a.dir/cmake_clean_target.cmake
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f84a.dir/link.txt --verbose=1
+/opt/riscv/bin/riscv32-unknown-elf-ar qc libcmTC_2f84a.a CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj
+/opt/riscv/bin/riscv32-unknown-elf-ranlib libcmTC_2f84a.a
+gmake[2]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+gmake[1]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/riscv32-unknown-elf/.]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/backward]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed]
+    add: [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include]
+  end of search list found
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0] ==> [/opt/riscv/riscv32-unknown-elf/include/c++/13.2.0]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/riscv32-unknown-elf/.] ==> [/opt/riscv/riscv32-unknown-elf/include/c++/13.2.0/riscv32-unknown-elf]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/backward] ==> [/opt/riscv/riscv32-unknown-elf/include/c++/13.2.0/backward]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include] ==> [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed] ==> [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed]
+  collapse include dir [/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include] ==> [/opt/riscv/riscv32-unknown-elf/include]
+  implicit include dirs: [/opt/riscv/riscv32-unknown-elf/include/c++/13.2.0;/opt/riscv/riscv32-unknown-elf/include/c++/13.2.0/riscv32-unknown-elf;/opt/riscv/riscv32-unknown-elf/include/c++/13.2.0/backward;/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include;/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed;/opt/riscv/riscv32-unknown-elf/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(riscv32-unknown-elf-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_2f84a/fast && gmake[1]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_2f84a.dir/build.make CMakeFiles/cmTC_2f84a.dir/build]
+  ignore line: [gmake[2]: Entering directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/opt/riscv/bin/riscv32-unknown-elf-g++   -O2    -v -std=gnu++11 -o CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/riscv/bin/riscv32-unknown-elf-g++]
+  ignore line: [Target: riscv32-unknown-elf]
+  ignore line: [Configured with: /home/runner/work/riscv-gnu-toolchain/riscv-gnu-toolchain/gcc/configure --target=riscv32-unknown-elf --prefix=/opt/riscv --disable-shared --disable-threads --enable-languages=c c++ --with-pkgversion= --with-system-zlib --enable-tls --with-newlib --with-sysroot=/opt/riscv/riscv32-unknown-elf --with-native-system-header-dir=/include --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-tm-clone-registry --src=.././gcc --disable-multilib --with-abi=ilp32d --with-arch=rv32gc --with-tune=rocket --with-isa-spec=20191213 'CFLAGS_FOR_TARGET=-Os    -mcmodel=medlow' 'CXXFLAGS_FOR_TARGET=-Os    -mcmodel=medlow']
+  ignore line: [Thread model: single]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 13.2.0 () ]
+  ignore line: [COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu++11' '-o' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_2f84a.dir/']
+  ignore line: [ /opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/cc1plus -quiet -v -imultilib . /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_2f84a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=rocket -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -march=rv32imafdc_zicsr_zifencei -O2 -std=gnu++11 -version -o /tmp/cclZCuaD.s]
+  ignore line: [GNU C++11 () version 13.2.0 (riscv32-unknown-elf)]
+  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/opt/riscv/riscv32-unknown-elf/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/opt/riscv/riscv32-unknown-elf/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/riscv32-unknown-elf/.]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include/c++/13.2.0/backward]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/include-fixed]
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/include]
+  ignore line: [End of search list.]
+  ignore line: [Compiler executable checksum: ad13cb0de9b78f29dc5fcfe68b5ab5d5]
+  ignore line: [COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu++11' '-o' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_2f84a.dir/']
+  ignore line: [ /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/as -v --traditional-format -march=rv32imafdc_zicsr_zifencei -march=rv32imafdc_zicsr_zifencei -mabi=ilp32d -misa-spec=20191213 -o CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cclZCuaD.s]
+  ignore line: [GNU assembler version 2.42 (riscv32-unknown-elf) using BFD version (GNU Binutils) 2.42]
+  ignore line: [COMPILER_PATH=/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/libexec/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/bin/]
+  ignore line: [LIBRARY_PATH=/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/:/opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/:/opt/riscv/riscv32-unknown-elf/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-O2' '-v' '-std=gnu++11' '-o' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=rocket' '-march=rv32imafdc_zicsr_zifencei' '-mabi=ilp32d' '-misa-spec=20191213' '-march=rv32imafdc_zicsr_zifencei' '-dumpdir' 'CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX static library libcmTC_2f84a.a]
+  ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_2f84a.dir/cmake_clean_target.cmake]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f84a.dir/link.txt --verbose=1]
+  ignore line: [/opt/riscv/bin/riscv32-unknown-elf-ar qc libcmTC_2f84a.a CMakeFiles/cmTC_2f84a.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/opt/riscv/bin/riscv32-unknown-elf-ranlib libcmTC_2f84a.a]
+  ignore line: [gmake[2]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: [gmake[1]: Leaving directory '/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/CMakeTmp']
+  ignore line: []
+  ignore line: []
+  implicit libs: []
+  implicit objs: []
+  implicit dirs: []
+  implicit fwks: []
+
+

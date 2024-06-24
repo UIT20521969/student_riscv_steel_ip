@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/vboxuser/Downloads/riscv-steel-2.0/software/libsteel/boot.S
+
+/home/vboxuser/Downloads/riscv-steel-2.0/software/libsteel/trap_vector.S
+

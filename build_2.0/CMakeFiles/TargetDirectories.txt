@@ -1,0 +1,4 @@
+/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/steel.dir
+/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/hello_world.elf.dir
+/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/edit_cache.dir
+/home/vboxuser/Downloads/riscv-steel-2.0/software/build/CMakeFiles/rebuild_cache.dir

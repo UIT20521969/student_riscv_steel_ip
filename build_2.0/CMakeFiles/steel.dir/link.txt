@@ -1,0 +1,2 @@
+/opt/riscv/bin/riscv32-unknown-elf-ar qc libsteel.a CMakeFiles/steel.dir/libsteel/boot.S.obj CMakeFiles/steel.dir/libsteel/trap_vector.S.obj CMakeFiles/steel.dir/libsteel/trap_handlers.c.obj
+/opt/riscv/bin/riscv32-unknown-elf-ranlib libsteel.a

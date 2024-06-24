@@ -1,0 +1,197 @@
+Archive member included to satisfy reference by file (symbol)
+
+libsteel.a(boot.S.obj)        (rvsteel_boot)
+libsteel.a(trap_vector.S.obj)
+                              libsteel.a(boot.S.obj) (rvsteel_trap_vector)
+libsteel.a(trap_handlers.c.obj)
+                              libsteel.a(trap_vector.S.obj) (fast15_irq_handler)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .data          0x00000000        0x0 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .bss           0x00000000        0x0 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .comment       0x00000000       0x10 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .riscv.attributes
+                0x00000000       0x25 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .text          0x00000000        0x0 libsteel.a(boot.S.obj)
+ .data          0x00000000        0x0 libsteel.a(boot.S.obj)
+ .bss           0x00000000        0x0 libsteel.a(boot.S.obj)
+ .riscv.attributes
+                0x00000000       0x27 libsteel.a(boot.S.obj)
+ .text          0x00000000        0x0 libsteel.a(trap_vector.S.obj)
+ .data          0x00000000        0x0 libsteel.a(trap_vector.S.obj)
+ .bss           0x00000000        0x0 libsteel.a(trap_vector.S.obj)
+ .riscv.attributes
+                0x00000000       0x23 libsteel.a(trap_vector.S.obj)
+ .text          0x00000000        0x0 libsteel.a(trap_handlers.c.obj)
+ .data          0x00000000        0x0 libsteel.a(trap_handlers.c.obj)
+ .bss           0x00000000        0x0 libsteel.a(trap_handlers.c.obj)
+ .comment       0x00000000       0x10 libsteel.a(trap_handlers.c.obj)
+ .riscv.attributes
+                0x00000000       0x29 libsteel.a(trap_handlers.c.obj)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x00000000         0x00002000         xw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00002000                        __memory_size = 0x2000
+                0x00000400                        __stack_size = 0x400
+                0x00000000                        __heap_size = 0x0
+LOAD CMakeFiles/hello_world.elf.dir/main.c.obj
+LOAD libsteel.a
+                0x00000400                        __stack_size = DEFINED (__stack_size)?__stack_size:0x400
+                0x00000000                        __heap_size = DEFINED (__heap_size)?__heap_size:0x0
+
+.text           0x00000000       0xf0
+ *(.init.rvsteel_boot)
+ .init.rvsteel_boot
+                0x00000000       0x20 libsteel.a(boot.S.obj)
+                0x00000000                rvsteel_boot
+ *(.init.rvsteel_trap_vector)
+ .init.rvsteel_trap_vector
+                0x00000020       0x80 libsteel.a(trap_vector.S.obj)
+                0x00000020                rvsteel_trap_vector
+ *(.text.rvsteel_return_from_trap)
+ .text.rvsteel_return_from_trap
+                0x000000a0        0x4 libsteel.a(trap_handlers.c.obj)
+                0x000000a0                mti_irq_handler
+                0x000000a0                fast13_irq_handler
+                0x000000a0                fast4_irq_handler
+                0x000000a0                default_trap_handler
+                0x000000a0                fast3_irq_handler
+                0x000000a0                msi_irq_handler
+                0x000000a0                fast8_irq_handler
+                0x000000a0                fast6_irq_handler
+                0x000000a0                fast7_irq_handler
+                0x000000a0                mei_irq_handler
+                0x000000a0                fast9_irq_handler
+                0x000000a0                fast2_irq_handler
+                0x000000a0                fast15_irq_handler
+                0x000000a0                rvsteel_return_from_trap
+                0x000000a0                fast12_irq_handler
+                0x000000a0                fast14_irq_handler
+                0x000000a0                fast1_irq_handler
+                0x000000a0                fast0_irq_handler
+                0x000000a0                fast5_irq_handler
+                0x000000a0                fast10_irq_handler
+                0x000000a0                fast11_irq_handler
+ *(.text.default_trap_handler)
+ *(.text.*_irq_handler)
+ *(SORT_NONE(.init))
+ *(SORT_NONE(.fini))
+                0x000000a4                        . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array*)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+                0x000000a4                        . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+                0x000000a4                        . = ALIGN (0x4)
+ *(.text*)
+ .text.startup.main
+                0x000000a4       0x2c CMakeFiles/hello_world.elf.dir/main.c.obj
+                0x000000a4                main
+ *(.gnu.linkonce.t.*)
+                0x000000d0                        . = ALIGN (0x4)
+ *(.rodata*)
+ .rodata.main.str1.4
+                0x000000d0       0x1f CMakeFiles/hello_world.elf.dir/main.c.obj
+                0x000000f0                        . = ALIGN (0x4)
+ *fill*         0x000000ef        0x1 
+ *(.srodata*)
+
+.data           0x000000f0        0x0
+ *(.data*)
+ *(.gnu.linkonce.d.*)
+                0x000000f0                        . = ALIGN (0x4)
+                0x000008f0                        PROVIDE (__global_pointer$ = (. + 0x800))
+ *(.sdata*)
+ *(.gnu.linkonce.s.*)
+                0x000000f0                        . = ALIGN (0x4)
+
+.bss            0x000000f0        0x0
+                [!provide]                        PROVIDE (__bss_start = .)
+ *(.sbss*)
+ *(.gnu.linkonce.sb.*)
+ *(.bss*)
+ *(.gnu.linkonce.b.*)
+ *(COMMON)
+                0x000000f0                        . = ALIGN (0x4)
+
+.heap           0x000000f0        0x0
+                [!provide]                        PROVIDE (end = .)
+                [!provide]                        PROVIDE (_end = .)
+                0x000000f0                        . = (. + __heap_size)
+
+.stack          0x000000f0      0x400
+                0x000004f0                        . = (. + __stack_size)
+ *fill*         0x000000f0      0x400 
+                0x000004f0                        . = ALIGN (0x4)
+
+/DISCARD/
+ *(.comment)
+ *(.riscv.attributes)
+                [!provide]                        PROVIDE (__stack_limit = ((ORIGIN (RAM) + LENGTH (RAM)) - __stack_size))
+                0x00002000                        PROVIDE (__stack_top = (ORIGIN (RAM) + LENGTH (RAM)))
+                [!provide]                        PROVIDE (__freertos_irq_stack_top = __stack_top)
+                [!provide]                        PROVIDE (__data_source_start = LOADADDR (.data))
+                [!provide]                        PROVIDE (__data_target_start = ADDR (.data))
+                [!provide]                        PROVIDE (__data_target_end = (ADDR (.data) + SIZEOF (.data)))
+                [!provide]                        PROVIDE (__bss_source_start = LOADADDR (.bss))
+                [!provide]                        PROVIDE (__bss_target_start = ADDR (.bss))
+                [!provide]                        PROVIDE (__bss_target_end = (ADDR (.bss) + SIZEOF (.bss)))
+OUTPUT(hello_world.elf elf32-littleriscv)
+
+.debug_info     0x00000000      0x22d
+ .debug_info    0x00000000      0x1ae CMakeFiles/hello_world.elf.dir/main.c.obj
+ .debug_info    0x000001ae       0x7f libsteel.a(trap_handlers.c.obj)
+
+.debug_abbrev   0x00000000      0x158
+ .debug_abbrev  0x00000000      0x117 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .debug_abbrev  0x00000117       0x41 libsteel.a(trap_handlers.c.obj)
+
+.debug_loclists
+                0x00000000       0x2e
+ .debug_loclists
+                0x00000000       0x2e CMakeFiles/hello_world.elf.dir/main.c.obj
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .debug_aranges
+                0x00000020       0x20 libsteel.a(trap_handlers.c.obj)
+
+.debug_rnglists
+                0x00000000       0x3e
+ .debug_rnglists
+                0x00000000       0x2b CMakeFiles/hello_world.elf.dir/main.c.obj
+ .debug_rnglists
+                0x0000002b       0x13 libsteel.a(trap_handlers.c.obj)
+
+.debug_line     0x00000000      0x15b
+ .debug_line    0x00000000      0x107 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .debug_line    0x00000107       0x54 libsteel.a(trap_handlers.c.obj)
+
+.debug_str      0x00000000      0x178
+ .debug_str     0x00000000      0x178 CMakeFiles/hello_world.elf.dir/main.c.obj
+                                0x198 (size before relaxing)
+ .debug_str     0x00000178      0x141 libsteel.a(trap_handlers.c.obj)
+
+.debug_line_str
+                0x00000000      0x173
+ .debug_line_str
+                0x00000000      0x173 CMakeFiles/hello_world.elf.dir/main.c.obj
+                                0x16e (size before relaxing)
+ .debug_line_str
+                0x00000173      0x116 libsteel.a(trap_handlers.c.obj)
+
+.debug_frame    0x00000000       0x40
+ .debug_frame   0x00000000       0x20 CMakeFiles/hello_world.elf.dir/main.c.obj
+ .debug_frame   0x00000020       0x20 libsteel.a(trap_handlers.c.obj)
