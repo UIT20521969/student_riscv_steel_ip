@@ -1,0 +1,101 @@
+
+build/main.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .boot:
+
+00000000 <_start>:
+   0:	00000097          	auipc	ra,0x0
+   4:	00008093          	mv	ra,ra
+   8:	40000113          	li	sp,1024
+   c:	00000297          	auipc	t0,0x0
+  10:	01028293          	addi	t0,t0,16 # 1c <__rvsteel_irq_handler__>
+  14:	30529073          	csrw	mtvec,t0
+  18:	0a00006f          	j	b8 <main>
+
+0000001c <__rvsteel_irq_handler__>:
+  1c:	10800293          	li	t0,264
+  20:	0002a303          	lw	t1,0(t0)
+  24:	000300e7          	jalr	t1
+  28:	30200073          	mret
+
+0000002c <uart_send_char>:
+  2c:	10402703          	lw	a4,260(zero) # 104 <__RVSTEEL_UART_TX>
+  30:	00100693          	li	a3,1
+  34:	00074783          	lbu	a5,0(a4)
+  38:	fed79ee3          	bne	a5,a3,34 <uart_send_char+0x8>
+  3c:	00a70023          	sb	a0,0(a4)
+  40:	00008067          	ret
+
+00000044 <uart_send_string>:
+  44:	00054603          	lbu	a2,0(a0)
+  48:	02060263          	beqz	a2,6c <uart_send_string+0x28>
+  4c:	00100693          	li	a3,1
+  50:	10402703          	lw	a4,260(zero) # 104 <__RVSTEEL_UART_TX>
+  54:	00074783          	lbu	a5,0(a4)
+  58:	fed79ee3          	bne	a5,a3,54 <uart_send_string+0x10>
+  5c:	00c70023          	sb	a2,0(a4)
+  60:	00154603          	lbu	a2,1(a0)
+  64:	00150513          	addi	a0,a0,1
+  68:	fe0614e3          	bnez	a2,50 <uart_send_string+0xc>
+  6c:	00008067          	ret
+
+00000070 <uart_read_last_char>:
+  70:	10002783          	lw	a5,256(zero) # 100 <__RVSTEEL_UART_RX>
+  74:	0007c503          	lbu	a0,0(a5)
+  78:	00008067          	ret
+
+0000007c <irq_enable_all>:
+  7c:	fe512e23          	sw	t0,-4(sp)
+  80:	fff00293          	li	t0,-1
+  84:	30029073          	csrw	mstatus,t0
+  88:	30429073          	csrw	mie,t0
+  8c:	ffc12283          	lw	t0,-4(sp)
+  90:	00008067          	ret
+
+00000094 <irq_disable_all>:
+  94:	fe512e23          	sw	t0,-4(sp)
+  98:	00000293          	li	t0,0
+  9c:	30029073          	csrw	mstatus,t0
+  a0:	30429073          	csrw	mie,t0
+  a4:	ffc12283          	lw	t0,-4(sp)
+  a8:	00008067          	ret
+
+000000ac <irq_set_interrupt_handler>:
+  ac:	10a02423          	sw	a0,264(zero) # 108 <__RVSTEEL_IRQ_HANDLER>
+  b0:	00008067          	ret
+
+000000b4 <busy_wait>:
+  b4:	0000006f          	j	b4 <busy_wait>
+
+Disassembly of section .text.startup:
+
+000000b8 <main>:
+  b8:	800207b7          	lui	a5,0x80020
+  bc:	0047a603          	lw	a2,4(a5) # 80020004 <__RVSTEEL_IRQ_HANDLER+0x8001fefc>
+  c0:	80020737          	lui	a4,0x80020
+  c4:	00200693          	li	a3,2
+  c8:	00266613          	ori	a2,a2,2
+  cc:	00c7a223          	sw	a2,4(a5)
+  d0:	0047a603          	lw	a2,4(a5)
+  d4:	ffe67613          	andi	a2,a2,-2
+  d8:	00c7a223          	sw	a2,4(a5)
+  dc:	00072783          	lw	a5,0(a4) # 80020000 <__RVSTEEL_IRQ_HANDLER+0x8001fef8>
+  e0:	0017f793          	andi	a5,a5,1
+  e4:	00078a63          	beqz	a5,f8 <main+0x40>
+  e8:	00d72823          	sw	a3,16(a4)
+  ec:	00072783          	lw	a5,0(a4)
+  f0:	0017f793          	andi	a5,a5,1
+  f4:	fe079ae3          	bnez	a5,e8 <main+0x30>
+  f8:	00d72623          	sw	a3,12(a4)
+  fc:	fe1ff06f          	j	dc <main+0x24>
+
+Disassembly of section .sdata:
+
+00000100 <__RVSTEEL_UART_RX>:
+ 100:	0004                	.insn	2, 0x0004
+ 102:	8000                	.insn	2, 0x8000
+
+00000104 <__RVSTEEL_UART_TX>:
+ 104:	0000                	.insn	2, 0x
+ 106:	8000                	.insn	2, 0x8000
