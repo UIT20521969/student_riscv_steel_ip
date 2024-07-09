@@ -1,0 +1,175 @@
+
+build/main.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .boot:
+
+00000000 <_start>:
+   0:	00000097          	auipc	ra,0x0
+   4:	00008093          	mv	ra,ra
+   8:	40000113          	li	sp,1024
+   c:	00000297          	auipc	t0,0x0
+  10:	01028293          	addi	t0,t0,16 # 1c <__rvsteel_irq_handler__>
+  14:	30529073          	csrw	mtvec,t0
+  18:	0e40006f          	j	fc <main>
+
+0000001c <__rvsteel_irq_handler__>:
+  1c:	1b800293          	li	t0,440
+  20:	0002a303          	lw	t1,0(t0)
+  24:	000300e7          	jalr	t1
+  28:	30200073          	mret
+
+0000002c <uart_send_char>:
+  2c:	1b402703          	lw	a4,436(zero) # 1b4 <__RVSTEEL_UART_TX>
+  30:	00100693          	li	a3,1
+  34:	00074783          	lbu	a5,0(a4)
+  38:	fed79ee3          	bne	a5,a3,34 <uart_send_char+0x8>
+  3c:	00a70023          	sb	a0,0(a4)
+  40:	00008067          	ret
+
+00000044 <uart_send_string>:
+  44:	00054603          	lbu	a2,0(a0)
+  48:	02060263          	beqz	a2,6c <uart_send_string+0x28>
+  4c:	00100693          	li	a3,1
+  50:	1b402703          	lw	a4,436(zero) # 1b4 <__RVSTEEL_UART_TX>
+  54:	00074783          	lbu	a5,0(a4)
+  58:	fed79ee3          	bne	a5,a3,54 <uart_send_string+0x10>
+  5c:	00c70023          	sb	a2,0(a4)
+  60:	00154603          	lbu	a2,1(a0)
+  64:	00150513          	addi	a0,a0,1
+  68:	fe0614e3          	bnez	a2,50 <uart_send_string+0xc>
+  6c:	00008067          	ret
+
+00000070 <uart_read_last_char>:
+  70:	1b002783          	lw	a5,432(zero) # 1b0 <__RVSTEEL_UART_RX>
+  74:	0007c503          	lbu	a0,0(a5)
+  78:	00008067          	ret
+
+0000007c <irq_enable_all>:
+  7c:	fe512e23          	sw	t0,-4(sp)
+  80:	fff00293          	li	t0,-1
+  84:	30029073          	csrw	mstatus,t0
+  88:	30429073          	csrw	mie,t0
+  8c:	ffc12283          	lw	t0,-4(sp)
+  90:	00008067          	ret
+
+00000094 <irq_disable_all>:
+  94:	fe512e23          	sw	t0,-4(sp)
+  98:	00000293          	li	t0,0
+  9c:	30029073          	csrw	mstatus,t0
+  a0:	30429073          	csrw	mie,t0
+  a4:	ffc12283          	lw	t0,-4(sp)
+  a8:	00008067          	ret
+
+000000ac <irq_set_interrupt_handler>:
+  ac:	1aa02c23          	sw	a0,440(zero) # 1b8 <__RVSTEEL_IRQ_HANDLER>
+  b0:	00008067          	ret
+
+000000b4 <busy_wait>:
+  b4:	0000006f          	j	b4 <busy_wait>
+
+Disassembly of section .text:
+
+000000b8 <process_received_character>:
+  b8:	ff010113          	addi	sp,sp,-16
+  bc:	00112623          	sw	ra,12(sp)
+  c0:	fb1ff0ef          	jal	70 <uart_read_last_char>
+  c4:	00d00713          	li	a4,13
+  c8:	02e50263          	beq	a0,a4,ec <process_received_character+0x34>
+  cc:	07e00713          	li	a4,126
+  d0:	00a77863          	bgeu	a4,a0,e0 <process_received_character+0x28>
+  d4:	00c12083          	lw	ra,12(sp)
+  d8:	01010113          	addi	sp,sp,16
+  dc:	00008067          	ret
+  e0:	00c12083          	lw	ra,12(sp)
+  e4:	01010113          	addi	sp,sp,16
+  e8:	f45ff06f          	j	2c <uart_send_char>
+  ec:	00c12083          	lw	ra,12(sp)
+  f0:	12c00513          	li	a0,300
+  f4:	01010113          	addi	sp,sp,16
+  f8:	f4dff06f          	j	44 <uart_send_string>
+
+Disassembly of section .text.startup:
+
+000000fc <main>:
+  fc:	ff010113          	addi	sp,sp,-16
+ 100:	15400513          	li	a0,340
+ 104:	00112623          	sw	ra,12(sp)
+ 108:	f3dff0ef          	jal	44 <uart_send_string>
+ 10c:	0b800513          	li	a0,184
+ 110:	f9dff0ef          	jal	ac <irq_set_interrupt_handler>
+ 114:	f69ff0ef          	jal	7c <irq_enable_all>
+ 118:	f9dff0ef          	jal	b4 <busy_wait>
+ 11c:	00c12083          	lw	ra,12(sp)
+ 120:	00000513          	li	a0,0
+ 124:	01010113          	addi	sp,sp,16
+ 128:	00008067          	ret
+
+Disassembly of section .rodata.str1.4:
+
+0000012c <.rodata.str1.4>:
+ 12c:	540a                	.insn	2, 0x540a
+ 12e:	7079                	.insn	2, 0x7079
+ 130:	2065                	.insn	2, 0x2065
+ 132:	656d6f73          	csrrsi	t5,hviprio1h,26
+ 136:	6874                	.insn	2, 0x6874
+ 138:	6e69                	.insn	2, 0x6e69
+ 13a:	6c652067          	.insn	4, 0x6c652067
+ 13e:	61206573          	csrrsi	a0,0x612,0
+ 142:	646e                	.insn	2, 0x646e
+ 144:	7020                	.insn	2, 0x7020
+ 146:	6572                	.insn	2, 0x6572
+ 148:	65207373          	csrrci	t1,0x652,0
+ 14c:	746e                	.insn	2, 0x746e
+ 14e:	7265                	.insn	2, 0x7265
+ 150:	203a                	.insn	2, 0x203a
+ 152:	0000                	.insn	2, 0x
+ 154:	520a                	.insn	2, 0x520a
+ 156:	5349                	.insn	2, 0x5349
+ 158:	20562d43          	.insn	4, 0x20562d43
+ 15c:	65657453          	.insn	4, 0x65657453
+ 160:	206c                	.insn	2, 0x206c
+ 162:	20436f53          	.insn	4, 0x20436f53
+ 166:	5049                	.insn	2, 0x5049
+ 168:	2d0a                	.insn	2, 0x2d0a
+ 16a:	2d2d                	.insn	2, 0x2d2d
+ 16c:	2d2d                	.insn	2, 0x2d2d
+ 16e:	2d2d                	.insn	2, 0x2d2d
+ 170:	2d2d                	.insn	2, 0x2d2d
+ 172:	2d2d                	.insn	2, 0x2d2d
+ 174:	2d2d                	.insn	2, 0x2d2d
+ 176:	2d2d                	.insn	2, 0x2d2d
+ 178:	2d2d                	.insn	2, 0x2d2d
+ 17a:	2d2d                	.insn	2, 0x2d2d
+ 17c:	0a0a                	.insn	2, 0x0a0a
+ 17e:	6548                	.insn	2, 0x6548
+ 180:	6c6c                	.insn	2, 0x6c6c
+ 182:	6f57206f          	j	73076 <__RVSTEEL_IRQ_HANDLER+0x72ebe>
+ 186:	6c72                	.insn	2, 0x6c72
+ 188:	2164                	.insn	2, 0x2164
+ 18a:	0a0a                	.insn	2, 0x0a0a
+ 18c:	7954                	.insn	2, 0x7954
+ 18e:	6570                	.insn	2, 0x6570
+ 190:	7320                	.insn	2, 0x7320
+ 192:	74656d6f          	jal	s10,568d8 <__RVSTEEL_IRQ_HANDLER+0x56720>
+ 196:	6968                	.insn	2, 0x6968
+ 198:	676e                	.insn	2, 0x676e
+ 19a:	6120                	.insn	2, 0x6120
+ 19c:	646e                	.insn	2, 0x646e
+ 19e:	7020                	.insn	2, 0x7020
+ 1a0:	6572                	.insn	2, 0x6572
+ 1a2:	65207373          	csrrci	t1,0x652,0
+ 1a6:	746e                	.insn	2, 0x746e
+ 1a8:	7265                	.insn	2, 0x7265
+ 1aa:	203a                	.insn	2, 0x203a
+ 1ac:	000a                	.insn	2, 0x000a
+
+Disassembly of section .sdata:
+
+000001b0 <__RVSTEEL_UART_RX>:
+ 1b0:	0004                	.insn	2, 0x0004
+ 1b2:	8000                	.insn	2, 0x8000
+
+000001b4 <__RVSTEEL_UART_TX>:
+ 1b4:	0000                	.insn	2, 0x
+ 1b6:	8000                	.insn	2, 0x8000
