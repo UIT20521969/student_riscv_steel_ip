@@ -7,7 +7,7 @@ Disassembly of section .boot:
 00000000 <_start>:
    0:	00000097          	auipc	ra,0x0
    4:	00008093          	mv	ra,ra
-   8:	40000113          	li	sp,1024
+   8:	00002137          	lui	sp,0x2
    c:	00000297          	auipc	t0,0x0
   10:	01028293          	addi	t0,t0,16 # 1c <__rvsteel_irq_handler__>
   14:	30529073          	csrw	mtvec,t0
@@ -46,7 +46,7 @@ Disassembly of section .boot:
   78:	00008067          	ret
 
 0000007c <irq_enable_all>:
-  7c:	fe512e23          	sw	t0,-4(sp)
+  7c:	fe512e23          	sw	t0,-4(sp) # 1ffc <__RVSTEEL_IRQ_HANDLER+0x1e44>
   80:	fff00293          	li	t0,-1
   84:	30029073          	csrw	mstatus,t0
   88:	30429073          	csrw	mie,t0
